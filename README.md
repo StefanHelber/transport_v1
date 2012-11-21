@@ -1,9 +1,2 @@
-# Ruby on Rails Tutorial: sample application
-
-This is the sample application for
-[*Ruby on Rails Tutorial: Learn Rails by Example*](http://railstutorial.org/)
-by [Michael Hartl](http://michaelhartl.com/).
-
-Uebertragen von Stefan Helber
-
-
+Dies ist das Grundgerüst einer einfachen deutschsprachigen Web-App auf
+Basis des Railstutorials von Michael Hartl, übertragen von Stefan Helber.
