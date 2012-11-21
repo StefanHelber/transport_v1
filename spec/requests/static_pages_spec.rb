@@ -1,3 +1,5 @@
+#encoding: UTF-8
+
 require 'spec_helper'
 
 describe "Static pages" do
@@ -11,7 +13,7 @@ describe "Static pages" do
 
   describe "Home page" do
     before { visit root_path }
-    let(:heading)    { 'Sample App' }
+    let(:heading)    { 'Transportplanung 1.0' }
     let(:page_title) { '' }
 
     it_should_behave_like "all static pages"
@@ -20,8 +22,8 @@ describe "Static pages" do
 
   describe "Help page" do
     before { visit help_path }
-    let(:heading)    { 'Help' }
-    let(:page_title) { 'Help' }
+    let(:heading)    { 'Hilfe' }
+    let(:page_title) { 'Hilfe' }
 
     it_should_behave_like "all static pages"
 
@@ -29,16 +31,16 @@ describe "Static pages" do
 
   describe "About page" do
     before { visit about_path }
-    let(:heading)    { 'About' }
-    let(:page_title) { 'About' }
+    let(:heading)    { 'Über uns' }
+    let(:page_title) { 'Über uns' }
 
     it_should_behave_like "all static pages"
   end
 
   describe "Contact page" do
     before { visit contact_path }
-    let(:heading)    { 'Contact' }
-    let(:page_title) { 'Contact' }
+    let(:heading)    { 'Kontakt' }
+    let(:page_title) { 'Kontakt' }
 
     it_should_behave_like "all static pages"
   end
@@ -47,17 +49,17 @@ describe "Static pages" do
 
   it "should have the right links on the layout" do
      visit root_path
-     click_link "About"
-     page.should have_selector 'title', text: full_title('About Us')
-     click_link "Help"
-     page.should have_selector 'title', text: full_title('Help')
-     click_link "Contact"
-     page.should have_selector 'title', text: full_title('Contact')
+     click_link "Über uns"
+     page.should have_selector 'title', text: full_title('Über uns')
+     click_link "Hilfe"
+     page.should have_selector 'title', text: full_title('Hilfe')
+     click_link "Kontakt"
+     page.should have_selector 'title', text: full_title('Kontakt')
      click_link "Home"
-     click_link "Sign up now!"
-     page.should have_selector 'title', text: full_title('Sign up')
-     click_link "sample app"
-     page.should have_selector 'h1', text: 'Sample App'
+     click_link "Melde Dich an!"
+     page.should have_selector 'title', text: full_title('Anmeldung')
+     click_link "Transportplanung 1.0"
+     page.should have_selector 'h1', text: 'Transportplanung 1.0 (Demoanwendung)'
    end
 
 

@@ -8,9 +8,9 @@ describe "Authentication" do
     before { visit signin_path }
 
     describe "with invalid information" do
-      before { click_button "Sign in" }
+      before { click_button "Hier geht's hinein!" }
 
-      it { should have_selector('title', text: 'Sign in') }
+      it { should have_selector('title', text: 'Login') }
       it { should have_selector('div.alert.alert-error', text: 'Invalid') }
 
       describe "after visiting another page" do
@@ -24,15 +24,15 @@ describe "Authentication" do
       before { sign_in user }
 
       it { should have_selector('title', text: user.name) }
-      it { should have_link('Users', href: users_path) }
-      it { should have_link('Profile', href: user_path(user)) }
-      it { should have_link('Settings', href: edit_user_path(user)) }
-      it { should have_link('Sign out', href: signout_path) }
-      it { should_not have_link('Sign in', href: signin_path) }
+      it { should have_link('Nutzer', href: users_path) }
+      it { should have_link('Profil', href: user_path(user)) }
+      it { should have_link('Einstellungen', href: edit_user_path(user)) }
+      it { should have_link('Logout', href: signout_path) }
+      it { should_not have_link('Login', href: signin_path) }
 
-      describe "followed by signout" do
-        before { click_link "Sign out" }
-        it { should have_link('Sign in') }
+      describe "followed by logout" do
+        before { click_link "Logout" }
+        it { should have_link('Login') }
       end
     end
   end
@@ -47,12 +47,12 @@ describe "Authentication" do
           visit edit_user_path(user)
           fill_in "Email", with: user.email
           fill_in "Password", with: user.password
-          click_button "Sign in"
+          click_button "Hier geht\'s hinein!"
         end
 
         describe "after signing in" do
           it "should render the desired protected page" do
-            page.should have_selector('title', text: 'Edit user')
+            page.should have_selector('title', text: 'Profil')
           end
         end
       end
@@ -61,7 +61,7 @@ describe "Authentication" do
 
         describe "visiting the edit page" do
           before { visit edit_user_path(user) }
-          it { should have_selector('title', text: 'Sign in') }
+          it { should have_selector('title', text: 'Login') }
         end
 
         describe "submitting to the update action" do
@@ -71,7 +71,7 @@ describe "Authentication" do
 
         describe "visiting the user index" do
           before { visit users_path}
-          it { should have_selector('title', text: 'Sign in') }
+          it { should have_selector('title', text: 'Login') }
         end
       end
 
