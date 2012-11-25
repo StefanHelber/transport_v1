@@ -1,4 +1,4 @@
-<h1>Listing sites</h1>
+<h1>Übersicht der Orte</h1>
 
 <table>
   <tr>
@@ -13,13 +13,13 @@
   <tr>
     <td><%= site.name %></td>
     <td><%= site.codename %></td>
-    <td><%= link_to 'Show', site %></td>
-    <td><%= link_to 'Edit', edit_site_path(site) %></td>
-    <td><%= link_to 'Destroy', site, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td><%= link_to 'Anzeigen', site %></td>
+    <td><%= link_to 'Ändern', edit_site_path(site) %></td>
+    <td><%= link_to 'Löschen', site, method: :delete, data: { confirm: 'Sind Sie sicher?' } %></td>
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New Site', new_site_path %>
+<%= link_to 'Neuen Ort anlegen', new_site_path %>

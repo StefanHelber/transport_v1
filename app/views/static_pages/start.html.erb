@@ -1,8 +1,19 @@
 <% provide(:title, 'Start') %>
 <h1>Start</h1>
 <p>
-  Auf dieser Seite startet die Transportplanung!
+Auf dieser Seite startet die Transportplanung!
 
-    <li><%= link_to "Hier geht es zur Verwaltung der Orte!", sites_path %></li>
+<li><%= link_to "Hier geht es zur Verwaltung der Orte!", sites_path %></li>
+<li><%= link_to "Hier geht es zur Verwaltung der Angebotsdaten!", supplysites_path %></li>
+<li><%= link_to "Hier geht es zur Verwaltung der Nachfragedaten!", demandsites_path %></li>
+<li><%= link_to "Hier geht es zur Verwaltung der Transportrelationen!", translinks_path %></li>
+</p>
+
+
+<p>
+
+Nach der Eingabe der Daten können wir nun endlich optimieren!
+
+<%= button_to "Optimiere", :controller => 'translinks', :action =>  'optimize'  %>
 
 </p>

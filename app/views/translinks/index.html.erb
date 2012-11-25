@@ -1,0 +1,29 @@
+<h1>Listing translinks</h1>
+
+<table>
+  <tr>
+    <th>Supplysite</th>
+    <th>Demandsite</th>
+    <th>Unit cost</th>
+    <th>Transport quantity</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @translinks.each do |translink| %>
+  <tr>
+    <td><%= translink.supplysite.site.codename %></td>
+    <td><%= translink.demandsite.site.codename %></td>
+    <td><%= translink.unit_cost %></td>
+    <td><%= translink.transport_quantity %></td>
+    <td><%= link_to 'Show', translink %></td>
+    <td><%= link_to 'Edit', edit_translink_path(translink) %></td>
+    <td><%= link_to 'Destroy', translink, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Translink', new_translink_path %>

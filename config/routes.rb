@@ -1,4 +1,9 @@
 SampleApp::Application.routes.draw do
+  resources :translinks
+
+  resources :demandsites
+  resources :supplysites
+
   resources :sites
 
   resources :users
@@ -14,6 +19,14 @@ SampleApp::Application.routes.draw do
   match '/about', to: 'static_pages#about'
   match '/contact', to: 'static_pages#contact'
   match '/start', to: 'static_pages#start'
+
+
+  match 'translinks/read_and_show_ofv', :to => 'translinks#read_and_show_ofv'
+  match 'translinks/read_transportation_quantities', :to => 'translinks#read_transportation_quantities'
+  match 'translinks/optimize', :to => 'translinks#optimize'
+  match 'translinks/delete_production_quantities', :to => 'translinks#delete_production_quantities'
+
+
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
