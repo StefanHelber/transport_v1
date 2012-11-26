@@ -27,3 +27,12 @@
 <br />
 
 <%= link_to 'New Translink', new_translink_path %>
+
+
+<br />
+<br />
+<br />
+
+<% if @objective_function_value!=nil %>
+    Die Kosten betragen <%=   @objective_function_value %> Geldeinheiten!
+<% end %>

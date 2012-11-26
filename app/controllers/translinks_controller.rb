@@ -82,6 +82,7 @@ class TranslinksController < ApplicationController
   end
 
 
+
   def optimize
 
     if File.exist?("Transportmodell_v3_Input_Instanz1.inc")
@@ -108,8 +109,8 @@ class TranslinksController < ApplicationController
     printf(f, "LJ(l,j) = no;\n\n")
 
     @translinks.each do |li|
-      printf(f, "LI( 'l" + li.id.to_s + "', 'i" + li.source_id.to_s + "') = yes;\n")
-      printf(f, "LJ( 'l" + li.id.to_s + "', 'j" + li.sink_id.to_s + "') = yes;\n\n")
+      printf(f, "LI( 'l" + li.id.to_s + "', 'i" + li.supplysite_id.to_s + "') = yes;\n")
+      printf(f, "LJ( 'l" + li.id.to_s + "', 'j" + li.demandsite_id.to_s + "') = yes;\n\n")
     end
     printf(f, "\n\n")
 
@@ -138,8 +139,8 @@ class TranslinksController < ApplicationController
 
     system "C:\\Programme\\Gams23.7\\gams Transportmodell_v2"
 
-    @translinks = TransportLink.all
-    render :template => "transport_links/index"
+    @translinks = Translink.all
+    render :template => "translinks/index"
 
 
   end
@@ -152,7 +153,7 @@ class TranslinksController < ApplicationController
       sa=line.split(";")
       sa0=sa[0].delete "l "
       sa3=sa[3].delete " \n"
-      al=TransportLink.find_by_id(sa0)
+      al=Translink.find_by_id(sa0)
       al.transport_quantity=sa3
       al.save
 
@@ -161,22 +162,23 @@ class TranslinksController < ApplicationController
     fi.close
 
 
-    @transport_links = TransportLink.find(:all)
-    render :template => "transport_links/index"
+    @translinks = Translink.all
+    render :template => "translinks/index"
 
 
   end
 
+
   def delete_production_quantities
-    @transport_links = TransportLink.find(:all)
-    @transport_links.each { |li|
+    @translinks = Translink.all
+    @translinks.each { |li|
       li.transport_quantity=0.0
       li.save
     }
 
     @objective_function_value=nil
 
-    render :template => "transport_links/index"
+    render :template => "translinks/index"
 
   end
 
@@ -192,8 +194,17 @@ class TranslinksController < ApplicationController
       @objective_function_value=nil
     end
 
-    @transport_links = TransportLink.find(:all)
-    render :template => "transport_links/index"
+    @translinks = Translink.all
+    render :template => "translinks/index"
   end
 
+
+
+
+
 end
+
+
+
+
+
