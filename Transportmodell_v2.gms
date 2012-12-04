@@ -21,21 +21,21 @@ positive variables x Transportmengen;
 
 Equations
 Zielfunktion         Das ist die Zielfunktion
-Angebot_abrufen(i)   Das Angebot muss abgerufen werden
+Angebot_einhalten(i)   Das Angebot darf nicht überschritten werden
 Nachfrage_decken(j)  Die Nachfrage muss befriedigt werden;
 
 Zielfunktion..
      Z =e=   sum(l,c(l)*x(l));
 
-Angebot_abrufen(i)..
-     sum(l$LI(l,i), x(l)) =e= A(i);
+Angebot_einhalten(i)..
+     sum(l$LI(l,i), x(l)) =l= A(i);
 
 Nachfrage_decken(j)..
-     sum(l$LJ(l,j), x(l)) =e= N(j);
+     sum(l$LJ(l,j), x(l)) =g= N(j);
 
 model transportv1 /
                  Zielfunktion
-                 , Angebot_abrufen
+                 , Angebot_einhalten
                  , Nachfrage_decken
                  /;
 
