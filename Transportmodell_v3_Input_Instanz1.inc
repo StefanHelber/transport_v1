@@ -1,4 +1,5 @@
 set i / 
+i1
 i2
 i3
 /
@@ -11,6 +12,10 @@ j4
 /
 
 l / 
+l1
+l2
+l3
+l4
 l5
 l6
 l7
@@ -23,6 +28,18 @@ l12
 
 LI(l,i) = no;
 LJ(l,j) = no;
+
+LI( 'l1', 'i1') = yes;
+LJ( 'l1', 'j1') = yes;
+
+LI( 'l2', 'i1') = yes;
+LJ( 'l2', 'j2') = yes;
+
+LI( 'l3', 'i1') = yes;
+LJ( 'l3', 'j3') = yes;
+
+LI( 'l4', 'i1') = yes;
+LJ( 'l4', 'j4') = yes;
 
 LI( 'l5', 'i2') = yes;
 LJ( 'l5', 'j1') = yes;
@@ -52,6 +69,7 @@ LJ( 'l12', 'j4') = yes;
 
 Parameter
   A(i) /
+i1  20.0
 i2  25.0
 i3  21.0
 /
@@ -66,6 +84,10 @@ j4  12.0
 
 
 c(l) /
+l1  6.0
+l2  2.0
+l3  6.0
+l4  7.0
 l5  4.0
 l6  9.0
 l7  5.0
