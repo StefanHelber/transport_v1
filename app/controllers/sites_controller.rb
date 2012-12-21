@@ -47,7 +47,7 @@ class SitesController < ApplicationController
 
     respond_to do |format|
       if @site.save
-        format.html { redirect_to @site, notice: 'Site was successfully created.' }
+        format.html { redirect_to @site, notice: 'Ort wurde erfolgreich angelegt!' }
         format.json { render json: @site, status: :created, location: @site }
       else
         format.html { render action: "new" }
@@ -63,7 +63,7 @@ class SitesController < ApplicationController
 
     respond_to do |format|
       if @site.update_attributes(params[:site])
-        format.html { redirect_to @site, notice: 'Site was successfully updated.' }
+        format.html { redirect_to @site, notice: 'Ort wurde erfolgreich aktualisiert.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
@@ -91,6 +91,6 @@ private
   def signed_in_user
     unless signed_in?
       store_location
-      redirect_to signin_path, notice: "Please sign in."
+      redirect_to signin_path, notice: "Bitte melden Sie sich an."
     end
   end

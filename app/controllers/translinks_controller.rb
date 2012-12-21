@@ -46,7 +46,7 @@ class TranslinksController < ApplicationController
 
     respond_to do |format|
       if @translink.save
-        format.html { redirect_to @translink, notice: 'Translink was successfully created.' }
+        format.html { redirect_to @translink, notice: 'Transportrelation wurde erfolgreich angelegt.' }
         format.json { render json: @translink, status: :created, location: @translink }
       else
         format.html { render action: "new" }
@@ -62,7 +62,7 @@ class TranslinksController < ApplicationController
 
     respond_to do |format|
       if @translink.update_attributes(params[:translink])
-        format.html { redirect_to @translink, notice: 'Translink was successfully updated.' }
+        format.html { redirect_to @translink, notice: 'Transportrelation wurde erfolgreich aktualisiert.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
@@ -225,7 +225,7 @@ private
   def signed_in_user
     unless signed_in?
       store_location
-      redirect_to signin_path, notice: "Please sign in."
+      redirect_to signin_path, notice: "Bitte melden Sie sich an."
     end
   end
 

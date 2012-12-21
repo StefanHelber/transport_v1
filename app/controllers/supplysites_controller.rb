@@ -48,7 +48,7 @@ class SupplysitesController < ApplicationController
 
     respond_to do |format|
       if @supplysite.save
-        format.html { redirect_to @supplysite, notice: 'Supplysite was successfully created.' }
+        format.html { redirect_to @supplysite, notice: 'Angebotsort wurde erfolgreich angelegt.' }
         format.json { render json: @supplysite, status: :created, location: @supplysite }
       else
         format.html { render action: "new" }
@@ -64,7 +64,7 @@ class SupplysitesController < ApplicationController
 
     respond_to do |format|
       if @supplysite.update_attributes(params[:supplysite])
-        format.html { redirect_to @supplysite, notice: 'Supplysite was successfully updated.' }
+        format.html { redirect_to @supplysite, notice: 'Angebotsort wurde erfolgreich aktualisiert.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
@@ -92,6 +92,6 @@ private
 def signed_in_user
   unless signed_in?
     store_location
-    redirect_to signin_path, notice: "Please sign in."
+    redirect_to signin_path, notice: "Bitte melden Sie sich an."
   end
 end

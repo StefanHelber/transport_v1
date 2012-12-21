@@ -47,7 +47,7 @@ class DemandsitesController < ApplicationController
 
     respond_to do |format|
       if @demandsite.save
-        format.html { redirect_to @demandsite, notice: 'Demandsite was successfully created.' }
+        format.html { redirect_to @demandsite, notice: 'Nachfrageort wurde erfolgreich angelegt.' }
         format.json { render json: @demandsite, status: :created, location: @demandsite }
       else
         format.html { render action: "new" }
@@ -63,7 +63,7 @@ class DemandsitesController < ApplicationController
 
     respond_to do |format|
       if @demandsite.update_attributes(params[:demandsite])
-        format.html { redirect_to @demandsite, notice: 'Demandsite was successfully updated.' }
+        format.html { redirect_to @demandsite, notice: 'Nachfrageort wurde erfolgreich aktualisiert.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
@@ -91,6 +91,6 @@ private
   def signed_in_user
     unless signed_in?
       store_location
-      redirect_to signin_path, notice: "Please sign in."
+      redirect_to signin_path, notice: "Bitte melden Sie sich an."
     end
   end
