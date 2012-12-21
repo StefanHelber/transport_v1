@@ -12,23 +12,19 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :supplysite_id %><br />
+    <%= f.label 'Angebotsort' %><br />
     <%= f.collection_select :supplysite_id, Supplysite.all, :id, :supplysite_codename %>
 
   </div>
   <div class="field">
-    <%= f.label :demandsite_id %><br />
+    <%= f.label 'Nachfrageort' %><br />
     <%= f.collection_select :demandsite_id, Demandsite.all, :id, :demandsite_codename %>
   </div>
   <div class="field">
-    <%= f.label :unit_cost %><br />
+    <%= f.label 'Einheitskostensatz' %><br />
     <%= f.text_field :unit_cost %>
   </div>
-  <div class="field">
-    <%= f.label :transport_quantity %><br />
-    <%= f.text_field :transport_quantity %>
-  </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit'Transportrelation anlegen oder aktualisieren' %>
   </div>
 <% end %>

@@ -1,4 +1,6 @@
 class TranslinksController < ApplicationController
+  before_filter :signed_in_user
+
   # GET /translinks
   # GET /translinks.json
   def index
@@ -82,7 +84,6 @@ class TranslinksController < ApplicationController
   end
 
 
-
   def optimize
 
     if File.exist?("Transportmodell_v3_Input_Instanz1.inc")
@@ -139,37 +140,49 @@ class TranslinksController < ApplicationController
 
     system "C:\\Programme\\Gams23.7\\gams Transportmodell_v2"
 
-    @translinks = Translink.all
-    render :template => "translinks/index"
-
+#    @translinks = Translink.all
+    flash.now[:started] = "Die Rechnung wurde gestartet!"
+    render 'static_pages/start'
 
   end
 
 
   def read_transportation_quantities
 
-    fi=File.open("Transportmengen_v2.txt", "r")
-    fi.each { |line| # printf(f,line)
-      sa=line.split(";")
-      sa0=sa[0].delete "l "
-      sa3=sa[3].delete " \n"
-      al=Translink.find_by_id(sa0)
-      al.transport_quantity=sa3
-      al.save
+    if File.exist?("Transportmengen_v2.txt")
 
-    }
+      fi=File.open("Transportmengen_v2.txt", "r")
+      fi.each { |line| # printf(f,line)
+        sa=line.split(";")
+        sa0=sa[0].delete "l "
+        sa3=sa[3].delete " \n"
+        al=Translink.find_by_id(sa0)
+        al.transport_quantity=sa3
+        al.save
 
-    fi.close
-
-
-    @translinks = Translink.all
-    render :template => "translinks/index"
+      }
+      fi.close
+      @translinks = Translink.all
+      render :template => "translinks/index"
+    else
+      flash.now[:not_available] = "Transportmengen wurden noch nicht berechnet!"
+      @translinks = Translink.all
+      render :template => "translinks/index"
+    end
 
 
   end
 
 
   def delete_production_quantities
+
+    if File.exist?("Transportmengen_v2.txt")
+      File.delete("Transportmengen_v2.txt")
+    end
+    if File.exist?("Zielfunktionswert_v2.txt")
+      File.delete("Zielfunktionswert_v2.txt")
+    end
+
     @translinks = Translink.all
     @translinks.each { |li|
       li.transport_quantity=0.0
@@ -192,6 +205,8 @@ class TranslinksController < ApplicationController
       @objective_function_value=sa[1]
     else
       @objective_function_value=nil
+      flash.now[:not_available] = "Zielfunktionswert wurde noch nicht berechnet!"
+
     end
 
     @translinks = Translink.all
@@ -199,12 +214,18 @@ class TranslinksController < ApplicationController
   end
 
 
-
-
-
 end
 
 
 
 
+
+private
+
+  def signed_in_user
+    unless signed_in?
+      store_location
+      redirect_to signin_path, notice: "Please sign in."
+    end
+  end
 

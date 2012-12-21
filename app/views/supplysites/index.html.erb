@@ -1,6 +1,6 @@
 <h1>Daten der Angebotsorte</h1>
 
-<table>
+<table class="table">
   <tr>
     <th>Code</th>
     <th>Ort</th>
@@ -15,7 +15,6 @@
     <td><%= supplysite.site.codename %></td>
     <td><%= supplysite.site.name %></td>
     <td><%= supplysite.supply_quantity %></td>
-    <td><%= link_to 'Anzeigen', supplysite %></td>
     <td><%= link_to 'Ändern', edit_supplysite_path(supplysite) %></td>
     <td><%= link_to 'Löschen', supplysite, method: :delete, data: { confirm: 'Sind Sie sicher?' } %></td>
   </tr>
@@ -24,4 +23,5 @@
 
 <br />
 
-<%= link_to 'Neuen Angebotsort anlegen', new_supplysite_path %>
+<%= link_to 'Neuen Angebotsort anlegen', new_supplysite_path %><br>  <br>
+<%= link_to 'Zurück zur Transportplanung', start_path %>

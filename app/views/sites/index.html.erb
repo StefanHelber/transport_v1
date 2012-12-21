@@ -1,6 +1,6 @@
 <h1>Übersicht der Orte</h1>
 
-<table>
+<table class="table">
   <tr>
     <th>Name</th>
     <th>Codename</th>
@@ -13,7 +13,6 @@
   <tr>
     <td><%= site.name %></td>
     <td><%= site.codename %></td>
-    <td><%= link_to 'Anzeigen', site %></td>
     <td><%= link_to 'Ändern', edit_site_path(site) %></td>
     <td><%= link_to 'Löschen', site, method: :delete, data: { confirm: 'Sind Sie sicher?' } %></td>
   </tr>
@@ -22,4 +21,6 @@
 
 <br />
 
-<%= link_to 'Neuen Ort anlegen', new_site_path %>
+<%= link_to 'Neuen Ort anlegen', new_site_path %><br>  <br>
+<%= link_to 'Zurück zur Transportplanung', start_path %>
+
