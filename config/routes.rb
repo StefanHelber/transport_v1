@@ -1,4 +1,4 @@
-SampleApp::Application.routes.draw do
+  SampleApp::Application.routes.draw do
   resources :translinks
 
   resources :demandsites

@@ -1,3 +1,14 @@
+# == Schema Information
+#
+# Table name: sites
+#
+#  id         :integer          not null, primary key
+#  name       :string(255)
+#  codename   :string(3)
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#
+
 class Site < ActiveRecord::Base
   attr_accessible :codename, :name
   validates :codename, presence: true, length: {maximum: 3, minimum: 3}

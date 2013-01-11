@@ -8,6 +8,19 @@ namespace :db do
                          password: "foobar",
                          password_confirmation: "foobar")
     admin.toggle!(:admin)
+
+    User.create!(name: "Stefan Helber",
+                 email: "stefan.helber@prod.uni-hannover.de",
+                 password: "foobar",
+                 password_confirmation: "foobar")
+
+
+    User.create!(name: "Susi Sorglos",
+                 email: "susi@sorglos.de",
+                 password: "foobar",
+                 password_confirmation: "foobar")
+
+
     99.times do |n|
       name = Faker::Name.name
       email = "example-#{n+1}@railstutorial.org"
@@ -51,18 +64,18 @@ namespace :db do
 
     DeSi4 = Demandsite.create!(site_id: S7.id, demand_quantity: 12)
 
-    TraLi1 =  Translink.create!(supplysite_id: SuSi1.id, demandsite_id: DeSi1.id, unit_cost: 6)
-    TraLi2 =  Translink.create!(supplysite_id: SuSi1.id, demandsite_id: DeSi2.id, unit_cost: 2)
-    TraLi3 =  Translink.create!(supplysite_id: SuSi1.id, demandsite_id: DeSi3.id, unit_cost: 6)
-    TraLi4 =  Translink.create!(supplysite_id: SuSi1.id, demandsite_id: DeSi4.id, unit_cost: 7)
-    TraLi5 =  Translink.create!(supplysite_id: SuSi2.id, demandsite_id: DeSi1.id, unit_cost: 4)
-    TraLi6 =  Translink.create!(supplysite_id: SuSi2.id, demandsite_id: DeSi2.id, unit_cost: 9)
-    TraLi7 =  Translink.create!(supplysite_id: SuSi2.id, demandsite_id: DeSi3.id, unit_cost: 5)
-    TraLi8 =  Translink.create!(supplysite_id: SuSi2.id, demandsite_id: DeSi4.id, unit_cost: 3)
-    TraLi9 =  Translink.create!(supplysite_id: SuSi3.id, demandsite_id: DeSi1.id, unit_cost: 8)
-    TraLi10 = Translink.create!(supplysite_id: SuSi3.id, demandsite_id: DeSi2.id, unit_cost: 8)
-    TraLi11 = Translink.create!(supplysite_id: SuSi3.id, demandsite_id: DeSi3.id, unit_cost: 1)
-    TraLi12 = Translink.create!(supplysite_id: SuSi3.id, demandsite_id: DeSi4.id, unit_cost: 6)
+    TraLi1 = Translink.create!(supplysite_id: SuSi1.id, demandsite_id: DeSi1.id, unit_cost: 6, transport_quantity: 0.0)
+    TraLi2 = Translink.create!(supplysite_id: SuSi1.id, demandsite_id: DeSi2.id, unit_cost: 2, transport_quantity: 0.0)
+    TraLi3 = Translink.create!(supplysite_id: SuSi1.id, demandsite_id: DeSi3.id, unit_cost: 6, transport_quantity: 0.0)
+    TraLi4 = Translink.create!(supplysite_id: SuSi1.id, demandsite_id: DeSi4.id, unit_cost: 7, transport_quantity: 0.0)
+    TraLi5 = Translink.create!(supplysite_id: SuSi2.id, demandsite_id: DeSi1.id, unit_cost: 4, transport_quantity: 0.0)
+    TraLi6 = Translink.create!(supplysite_id: SuSi2.id, demandsite_id: DeSi2.id, unit_cost: 9, transport_quantity: 0.0)
+    TraLi7 = Translink.create!(supplysite_id: SuSi2.id, demandsite_id: DeSi3.id, unit_cost: 5, transport_quantity: 0.0)
+    TraLi8 = Translink.create!(supplysite_id: SuSi2.id, demandsite_id: DeSi4.id, unit_cost: 3, transport_quantity: 0.0)
+    TraLi9 = Translink.create!(supplysite_id: SuSi3.id, demandsite_id: DeSi1.id, unit_cost: 8, transport_quantity: 0.0)
+    TraLi10 = Translink.create!(supplysite_id: SuSi3.id, demandsite_id: DeSi2.id, unit_cost: 8, transport_quantity: 0.0)
+    TraLi11 = Translink.create!(supplysite_id: SuSi3.id, demandsite_id: DeSi3.id, unit_cost: 1, transport_quantity: 0.0)
+    TraLi12 = Translink.create!(supplysite_id: SuSi3.id, demandsite_id: DeSi4.id, unit_cost: 6, transport_quantity: 0.0)
 
 
   end
