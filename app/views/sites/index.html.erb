@@ -6,6 +6,7 @@
     <th>Codename</th>
     <th></th>
     <th></th>
+    <th></th>
   </tr>
   </thead>
   <tbody>
@@ -14,6 +15,7 @@
       <tr>
         <td><%= site.name %></td>
         <td><%= site.codename %></td>
+        <td><%= link_to 'Zeigen', site %></td>
         <td><%= link_to 'Ändern', edit_site_path(site) %></td>
         <td><%= link_to 'Löschen', site, method: :delete, data: {confirm: 'Sind Sie sicher?'} %></td>
       </tr>

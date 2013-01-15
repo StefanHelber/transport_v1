@@ -15,6 +15,7 @@
     <td><%= demandsite.site.codename %></td>
     <td><%= demandsite.site.name %></td>
     <td><%= demandsite.demand_quantity %></td>
+    <td><%= link_to 'Zeigen', demandsite %></td>
     <td><%= link_to 'Ändern', edit_demandsite_path(demandsite) %></td>
     <td><%= link_to 'Löschen', demandsite, method: :delete, data: { confirm: 'Sind Sie sicher?' } %></td>
   </tr>

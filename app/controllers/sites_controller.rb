@@ -1,4 +1,5 @@
 class SitesController < ApplicationController
+  respond_to :html, :json
   before_filter :signed_in_user
   # GET /sites
   # GET /sites.json
