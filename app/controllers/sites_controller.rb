@@ -1,7 +1,5 @@
 class SitesController < ApplicationController
   before_filter :signed_in_user
-
-
   # GET /sites
   # GET /sites.json
   def index

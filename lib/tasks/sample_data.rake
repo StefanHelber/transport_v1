@@ -22,7 +22,8 @@ namespace :db do
 
 
     99.times do |n|
-      name = Faker::Name.name
+#      name = Faker::Name.name
+      name = "Nutzer-#{n+1}"
       email = "example-#{n+1}@railstutorial.org"
       password = "password"
       User.create!(name: name,
@@ -49,6 +50,17 @@ namespace :db do
                       codename: "HAM")
     S8 = Site.create!(name: "Stuttgart",
                       codename: "STR")
+
+
+    (10..99).each do |n|
+      name = "Beispielort-#{n}"
+      codename = "C#{n}"
+      Site.create!(name: name,
+                   codename: codename)
+    end
+
+
+
 
     SuSi1 = Supplysite.create!(site_id: S1.id, supply_quantity: 20)
 
